@@ -1,4 +1,4 @@
-# Big Data Analytics Mini-Projects
+# SocialNetworkAnalysis and GraphFrames Mini Project
 
 This repository contains two independent mini-projects built with Apache Spark,
 Kafka, and the Elastic Stack as part of a Big Data Analytics course
