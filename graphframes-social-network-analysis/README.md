@@ -1,7 +1,7 @@
 # Social Network Analysis with GraphFrames
 
-Graph analysis of a real social network using [Spark GraphFrames](https://graphframes.io/)
-on Databricks. The dataset is the Stanford SNAP **ego-Facebook** network —
+Graph analysis of a real social network using Spark GraphFrames 
+on Databricks. The dataset is the Stanford SNAP **ego-Facebook** network, 
 an undirected social graph of Facebook "friends lists" with 4,039 nodes.
 
 - Dataset source: https://snap.stanford.edu/data/ego-Facebook.html
@@ -12,36 +12,17 @@ Using `data/facebook_combined.txt.gz` (edge list: `src dst` pairs) as input,
 the notebook (`notebook/Analyzing Social Networks using GraphFrame.ipynb`)
 builds a GraphFrame and computes:
 
-- **PageRank** — the most "influential" nodes in the network
-- **Connected components** — whether/how the graph is partitioned
-- **Triangle count** — local clustering / community structure per node
-- **In-degree / Out-degree** — most-connected nodes
-
-Sample top-5 results for each metric (from a full run) are included in
-[`sample_output/`](./sample_output) as CSV files.
+- **PageRank** - the most "influential" nodes in the network
+- **Connected components** - whether/how the graph is partitioned
+- **Triangle count** - local clustering / community structure per node
+- **In-degree / Out-degree** - most-connected nodes
 
 | Metric | Top result (node id) |
 |---|---|
-| PageRank | `3437` (score ≈ 29.4) |
+| PageRank | `3437` (score approximatly 29.4) |
 | Triangle count | `1912` (30,025 triangles) |
 | In/Out-degree | `107` (1,045 connections) |
 | Connected components | 1 component, 4,039 nodes (fully connected) |
-
-## Repo layout
-
-```
-graphframes-social-network-analysis/
-├── notebook/
-│   └── Analyzing Social Networks using GraphFrame.ipynb
-├── data/
-│   └── facebook_combined.txt.gz     # SNAP ego-Facebook edge list
-└── sample_output/                   # Example top-5 results per metric
-    ├── top5_pagerank.csv
-    ├── top5_conncomp.csv
-    ├── top5_tricount.csv
-    ├── top5_indegree.csv
-    └── top5_outdegree.csv
-```
 
 ## Running it
 
@@ -69,8 +50,3 @@ pyspark --packages graphframes:graphframes:0.8.3-spark3.5-s_2.12
 
 Then adapt the notebook's file paths from `dbfs:/...` to a local/HDFS path
 for `data/facebook_combined.txt.gz`.
-
-## Notes
-
-- `sample_output/` contains small, pre-computed CSVs from a prior run for
-  quick reference — they are not regenerated automatically.

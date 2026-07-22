@@ -33,11 +33,9 @@ NewsAPI --> [producer/realTimeNewsFetcher.py] --> Kafka topic "datafetchtopic"
 ## Prerequisites
 
 - Java 8/11 (required by Kafka and Spark)
-- [Apache Kafka](https://kafka.apache.org/quickstart) (tested with 2.13-4.0.0)
-- [Apache Spark](https://spark.apache.org/) with `spark-submit` on your `PATH`
+- Apache Kafka (tested with 2.13-4.0.0)
+- Apache Spark with `spark-submit` on your `PATH`
 - Python 3.9+
-- [Elasticsearch, Logstash, Kibana](https://www.elastic.co/downloads) (tested with 8.x)
-- A free API key from [NewsAPI](https://newsapi.org/)
 
 ## Setup
 
@@ -101,25 +99,3 @@ All secrets are read from environment variables — nothing is hard-coded:
 |---|---|---|
 | `NEWSAPI_KEY` | `producer/realTimeNewsFetcher.py` | Auth for the NewsAPI client |
 | `ELASTIC_PASSWORD` | `logstash/logstash.conf` | Auth for the `elastic` Elasticsearch user |
-
-## Repo layout
-
-```
-news-entity-streaming-pipeline/
-├── producer/
-│   └── realTimeNewsFetcher.py   # Fetches headlines from NewsAPI -> Kafka
-├── streaming/
-│   └── streamingApp.py          # Spark Structured Streaming NER job
-├── logstash/
-│   └── logstash.conf            # Kafka -> Elasticsearch pipeline config
-├── requirements.txt
-└── .env.example
-```
-
-## Notes / known limitations
-
-- The Spark Structured Streaming job currently writes results to the console
-  by default for easy debugging; switch to the Kafka sink (already stubbed
-  out in `streamingApp.py`) to feed Logstash end-to-end.
-- Spark checkpoint directories generated at runtime are intentionally not
-  committed to version control (see the root `.gitignore`).
