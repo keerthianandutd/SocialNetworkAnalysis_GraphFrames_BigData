@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+
+# Spark / streaming checkpoints & logs (large, machine-specific, regenerated at runtime)
+checkpoint/
+**/checkpoint/
+*.crc
+_metadata
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

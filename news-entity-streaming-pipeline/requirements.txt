@@ -1,0 +1,4 @@
+newsapi-python
+kafka-python
+spacy
+pyspark==3.5.0
